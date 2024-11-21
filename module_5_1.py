@@ -12,7 +12,7 @@ class House:
                 print(num)
         else:
             sleep(1)
-            print('Такого этажа не существует')
+            print(f'В "{self.name}" такого этажа ({floor}) не существует.')
 
 
 h1 = House('ЖК Горский', 18)
