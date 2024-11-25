@@ -3,8 +3,8 @@ class House:
     houses_history = []
 
     def __new__(cls, *args, **kwargs):
-        if cls.houses_history is None:
-            cls.__add__House.houses_history = super().__new__(cls)
+        cls.houses_history.append(args[0])
+        return super().__new__(cls)
 
     def __init__(self, name, number_of_floors):
          self.name = name
@@ -51,12 +51,30 @@ class House:
             self.number_of_floors += value
             return self
 
+class Demolition:
+
+    def __init__(self, name):
+         self.name = name
+
+    def __del__(self):
+        return print(f'{self.name} снесен, но он останется в истории')
+
+
+
 h1 = House('ЖК Эльбрус', 10)
 print(House.houses_history)
 h2 = House('ЖК Акация', 20)
 print(House.houses_history)
 h3 = House('ЖК Матрёшки', 20)
 print(House.houses_history)
+
+# Удаление объектов
+h2 = Demolition('ЖК Акация')
+h3 = Demolition('ЖК Матрешки')
+
+
+
+
 # h1 = House('ЖК Эльбрус', 10)
 # h2 = House('ЖК Акация', 20)
 #
