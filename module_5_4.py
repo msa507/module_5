@@ -15,7 +15,7 @@ class House:
 
     def __str__(self):
         """Вывод в консоль"""
-        return (f'Название: {self.name}, кол-во этажей: {self.number_of_floors}')
+        return f'Название: {self.name}, кол-во этажей: {self.number_of_floors}'
 
     def __eq__(self, other):
         if isinstance(other.number_of_floors, int):
@@ -69,29 +69,6 @@ h3 = House('ЖК Матрёшки', 20)
 print(House.houses_history)
 
 # Удаление объектов
-h2 = Demolition('ЖК Акация')
-h3 = Demolition('ЖК Матрешки')
-
-
-
-
-# h1 = House('ЖК Эльбрус', 10)
-# h2 = House('ЖК Акация', 20)
-#
-# print(h1)
-# print(h2)
-#
-# print(h1 == h2)
-#
-# h1 += 10
-# print(h1)
-#
-# h2 = 10 + h2
-# print(h2)
-#
-# print(h1 < h2)
-# print(h1 <= h2)
-# print(h1 > h2)
-# print(h1 >= h2)
-# print(h1 != h2)
+h4 = Demolition('ЖК Акация')
+h5 = Demolition('ЖК Матрешки')
 
