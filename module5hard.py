@@ -1,3 +1,6 @@
+from webbrowser import register
+
+
 class User:
     def __init__(self, nickname, hashpass, age):
         self.nickname = nickname
@@ -16,6 +19,11 @@ class Video:
 
 
 class UrTube(User, Video):
+    def __init__(self):
+        users = User(self.nickname, self.hashpass, self.age)
+        videos = Video(self.title)
+        current_user = register(self.current_user)
+
     def log_in(self, login, password):
         hashpass = hash(password)
         for user in self.users:
