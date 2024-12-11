@@ -16,7 +16,7 @@ class Video:
         self.adult_mode = adult_mode
 
 
-class UrTube():
+class UrTube:
     def __init__(self):
         self.users = []
         self.videos = []
@@ -31,7 +31,7 @@ class UrTube():
     def register(self, nickname, password, age):
        self.hashpass = hash(password)
        for user in self.users:
-           if (user.nickname == nickname):
+           if user.nickname == nickname:
                print(f'Пользователь {nickname}, {age} годов, уже существует')
                break
        else:
@@ -66,6 +66,14 @@ class UrTube():
         for video in videos:
             self.videos.append(video)
 
+    def get_videos(self,keyword):
+        name_videos = []
+        for video in self.videos:
+            if keyword.lower() in video.title.lower():
+                name_videos.append(video.title)
+        return name_videos
+
+
 ur = UrTube()
 v1 = Video('Лучший язык программирования 2024 года', 200)
 v2 = Video('Для чего девушкам парень программист?', 5, adult_mode=True)
@@ -73,25 +81,26 @@ v2 = Video('Для чего девушкам парень программист
 # Добавление видео
 ur.add(v1, v2)
 
-ur.log_in('vasya_pupkin', 'lolkekcheburek')
-
 # Проверка поиска
-# print(ur.watch_video('лучший'))
-# print(ur.watch_video('ПРОГ'))
+print(ur.get_videos('лучший'))
+print(ur.get_videos('ПРОГ'))
 
 # Проверка на вход пользователя и возрастное ограничение
 ur.watch_video('Для чего девушкам парень программист?')
 ur.register('vasya_pupkin', 'lolkekcheburek', 18)
 ur.watch_video('Для чего девушкам парень программист?')
-# ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
 
-# ur = UrTube()
-#
-ur.register('vasya_pupkin', 'lolkekcheburek', 13)
+# ur.register('vasya_pupkin', 'lolkekcheburek', 13)
 ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
 ur.log_in('vasya_pupkin', 'lolkekcheburek')
 ur.watch_video('Прикол')
 
+# Проверка входа в другой аккаунт
+ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
+print(ur.current_user)
+
+# Попытка воспроизведения несуществующего видео
+ur.watch_video('Лучший язык программирования 2024 года!')
 
 
 
